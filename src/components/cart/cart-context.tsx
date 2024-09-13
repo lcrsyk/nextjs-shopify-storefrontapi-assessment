@@ -7,7 +7,9 @@ type UpdateType = 'plus' | 'minus' | 'delete';
 
 type CartAction =
   | { type: 'UPDATE_ITEM'; payload: { merchandiseId: string; updateType: UpdateType } }
-  | { type: 'ADD_ITEM'; payload: { variant: ProductVariant; product: Product } };
+  | { type: 'ADD_ITEM'; payload: { variant: ProductVariant; product: Product } }
+  |  { type: 'OPEN_CART';}
+  |  { type: 'CLOSE_CART';};
 
 type CartContextType = {
   cart: Cart | undefined;
@@ -103,7 +105,7 @@ function createEmptyCart(): Cart {
   };
 }
 
-function cartReducer(state: Cart | undefined, action: CartAction): Cart {
+export function cartReducer(state: Cart | undefined, action: CartAction): Cart {
   const currentCart = state || createEmptyCart();
 
   switch (action.type) {
@@ -132,6 +134,7 @@ function cartReducer(state: Cart | undefined, action: CartAction): Cart {
     case 'ADD_ITEM': {
       const { variant, product } = action.payload;
       const existingItem = currentCart.lines.find((item) => item.merchandise.id === variant.id);
+
       const updatedItem = createOrUpdateCartItem(existingItem, variant, product);
 
       const updatedLines = existingItem
@@ -139,6 +142,12 @@ function cartReducer(state: Cart | undefined, action: CartAction): Cart {
         : [...currentCart.lines, updatedItem];
 
       return { ...currentCart, ...updateCartTotals(updatedLines), lines: updatedLines };
+    }
+    case 'OPEN_CART': {
+      return {...currentCart, isOpen: true}
+    }
+    case 'CLOSE_CART': {
+      return {...currentCart, isOpen: false}
     }
     default:
       return currentCart;
@@ -153,6 +162,7 @@ export function CartProvider({
   cartPromise: Promise<Cart | undefined>;
 }) {
   const initialCart = use(cartPromise);
+
   const [optimisticCart, updateOptimisticCart] = useOptimistic(initialCart, cartReducer);
 
   const updateCartItem = (merchandiseId: string, updateType: UpdateType) => {

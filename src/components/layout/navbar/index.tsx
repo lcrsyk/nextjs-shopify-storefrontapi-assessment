@@ -4,8 +4,9 @@ import { usePathname } from 'next/navigation';
 import { Menu } from '../../../lib/shopify/types';
 import Link from 'next/link';
 import CartButton from '@/components/cart/cart-button';
+import CartModal from '@/components/cart/cart-modal';
 
-export async function Navbar() {
+export function Navbar() {
   const pathname = usePathname();
 
   const isActive = (path: string) => pathname === path;
@@ -44,7 +45,7 @@ export async function Navbar() {
           <Link key={index} className={`text-primary ${isActive(item.path) ? "font-bold after:top-1 after:bg-primary after:block after:w-[140%] after:h-1 after:left-[-20%] after:relative" : null } px-2 `} href={item.path}>{item.title}</Link>
         ))}
       </ul>
-      <CartButton />
+      <CartModal />
     </nav>
   );
 }

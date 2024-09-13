@@ -7,6 +7,9 @@ const nextConfig = {
         });
         return config;
     },
+    images: {
+      domains: ['cdn.shopify.com'], // Add the domain here
+    },
 };
 
 export default nextConfig;

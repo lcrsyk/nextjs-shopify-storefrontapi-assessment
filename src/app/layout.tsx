@@ -9,6 +9,7 @@ import AnnouncementBar from '@/components/layout/announcement-bar';
 
 
 import './globals.css';
+import CartModal from '@/components/cart/cart-modal';
 
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
@@ -41,6 +42,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const cartId = cookies().get('cartId')?.value;
   // Don't await the fetch, pass the Promise to the context provider
   const cart = getCart(cartId);
+  
 
   return (
     <html lang="en">

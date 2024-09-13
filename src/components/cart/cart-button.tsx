@@ -4,11 +4,10 @@ import CartIcon from '@/app/assets/cart.svg';
 import CartEmptyIcon from '@/app/assets/cart-empty.svg';
 
 
-export default function CartButton({}) {
+export default function CartButton({onClick}: {onClick: () => void}) {
     const { cart } = useCart();
     const isCartEmpty = cart?.totalQuantity === 0;
-    console.log(isCartEmpty)
     return (
-        !isCartEmpty ? <CartIcon className="absolute right-16 cursor-pointer" /> : <CartEmptyIcon className="absolute right-16 cursor-pointer"/>
+        !isCartEmpty ? <button onClick={() => { onClick()}}><CartIcon className="absolute right-16 cursor-pointer" /></button> : <button onClick={() => { onClick()}}><CartEmptyIcon className="absolute right-16 cursor-pointer"/></button>
     )
 }

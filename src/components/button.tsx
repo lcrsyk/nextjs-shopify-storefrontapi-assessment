@@ -4,13 +4,13 @@ type ButtonProps = {
   as?: "button" | "a";
   href?: string;
   icon?: any;
-  variant: "primary" | "bordered";
+  variant: "primary" | "danger" | "bordered";
   disabled?: boolean;
   children: React.ReactNode;
 } & Omit<React.ComponentProps<"button">, "children">;
 
 export default function Button({
-  as = 'button',
+  as = "button",
   href,
   icon,
   variant,
@@ -18,9 +18,8 @@ export default function Button({
   children,
   ...rest
 }: ButtonProps) {
-    console.log(variant)
   const Icon = icon;
-  return as === 'a' ? (
+  return as === "a" ? (
     <Link
       href={href || "#"}
       className={`${
@@ -28,19 +27,26 @@ export default function Button({
           ? "bg-primary text-white"
           : variant === "bordered"
           ? "border-[1.5px] border-primary hover:bg-primary text-primary hover:text-white"
+          : variant === "danger"
+          ? "bg-red-800 text-white"
           : null
       } ${rest.className}`}
     >
       {children}
     </Link>
   ) : (
-    <button {...rest} className={`${
+    <button
+      {...rest}
+      className={`${
         variant === "primary"
           ? "bg-primary text-white"
           : variant === "bordered"
           ? "border-[1.5px] border-primary hover:bg-primary text-primary hover:text-white"
+          : variant === "danger"
+          ? "bg-red-800 text-white"
           : null
-      } ${rest.className}`} >
+      } ${rest.className}`}
+    >
       {children}
     </button>
   );

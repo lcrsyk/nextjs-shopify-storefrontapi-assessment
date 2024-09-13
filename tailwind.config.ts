@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+import type { PluginAPI } from 'tailwindcss/types/config';
+
 
 const config: Config = {
   content: [
@@ -25,9 +27,20 @@ const config: Config = {
       },
       maxWidth: {
         '7xl': '1200px',
+      },
+      boxShadow: {
+        'custom': '3px 3px 9px 0px rgba(0, 0, 0, 0.25)',
       }
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }: PluginAPI) {
+      addUtilities({
+        '.text-shadow': {
+          textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+        }
+      });
+    },
+  ],
 };
 export default config;

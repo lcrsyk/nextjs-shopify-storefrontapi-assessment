@@ -10,6 +10,7 @@ export type Edge<T> = {
 
 export type Cart = Omit<ShopifyCart, 'lines'> & {
   lines: CartItem[];
+  isOpen?: boolean;
 };
 
 export type CartProduct = {

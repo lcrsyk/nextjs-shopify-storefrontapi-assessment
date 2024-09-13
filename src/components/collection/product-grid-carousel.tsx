@@ -31,9 +31,6 @@ export default function ProductGridCarousel({
             {products
               .slice(index * rows * cols, (index + 1) * rows * cols)
               .map((product) => {
-                console.log(
-                  products.slice(index * rows * cols, (index + 1) * rows * cols)
-                );
                 return <ProductCard key={product.id} product={product} />;
               })}
           </SwiperSlide>
