@@ -7,6 +7,7 @@ import { cookies } from 'next/headers';
 import { ReactNode } from 'react';
 import AnnouncementBar from '@/components/layout/announcement-bar';
 
+
 import './globals.css';
 
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;

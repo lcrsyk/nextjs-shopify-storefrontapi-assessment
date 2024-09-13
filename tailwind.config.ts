@@ -22,6 +22,9 @@ const config: Config = {
         '3xl': '4rem',
         '4xl': '4rem',
         '5xl': '6rem',
+      },
+      maxWidth: {
+        '7xl': '1200px',
       }
     },
   },
