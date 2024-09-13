@@ -2,11 +2,15 @@ import { useSwiper } from "swiper/react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Button from "../button";
 
-export default function CustomNavigation() {
+type CustomNavigationProps = {
+  className: string
+}
+
+export default function CustomNavigation({className}: CustomNavigationProps) {
   const swiper = useSwiper();
 
   return (
-    <div className="flex gap-5 absolute lg:bottom-10 z-50">
+    <div className={`flex gap-2 z-50 ${className}`}>
       <Button
         className="px-2 py-1 rounded-[99px] uppercase"
         variant="bordered"

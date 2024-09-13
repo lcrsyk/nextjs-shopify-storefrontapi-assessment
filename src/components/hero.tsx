@@ -1,5 +1,5 @@
 import { getProducts } from '@/lib/shopify';
-import HeroCarousel from './hero-carousel';
+import HeroCarousel from './carousel/hero-carousel';
 import heroBgUrl from '@/app/assets/hero-bg.png';
 
 

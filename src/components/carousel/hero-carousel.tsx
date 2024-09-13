@@ -50,8 +50,7 @@ export default function HeroCarousel({ items }: HeroCarouselProps) {
           />
         </SwiperSlide>
       ))}
-            <CustomNavigation />
-
+      <CustomNavigation className="absolute lg:bottom-10"/>
     </Swiper>
   );
 }
