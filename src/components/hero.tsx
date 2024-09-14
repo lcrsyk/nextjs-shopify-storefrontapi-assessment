@@ -11,7 +11,7 @@ export async function Hero() {
       
   return (
  
-    <div className={`flex justify-center items-center w-full min-h-[653px] py-16 bg-cover bg-center`} style={{ backgroundImage: `url('${heroBgUrl.src}')`}}>
+    <div className={`flex justify-center items-center w-full min-h-[685px] md:min-h-[653px] py-16 bg-cover bg-center`} style={{ backgroundImage: `url('${heroBgUrl.src}')`}}>
        <HeroCarousel items={carouselProducts} />
     </div>
     

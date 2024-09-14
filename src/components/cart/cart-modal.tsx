@@ -46,8 +46,8 @@ export default function CartModal() {
         <div className="flex flex-col md:w-[500px] h-auto bg-white rounded-lg p-4 gap-2">
           <h4 className="font-bold">Tu Carrito</h4>
           <div className="flex flex-col">
-            {cart?.lines.map((item) => (
-              <div className="flex justify-between">
+            {cart?.lines.map((item, index) => (
+              <div key={index} className="flex justify-between">
                 <span className="flex">
                   {item.merchandise.product.title} -
                   <Price

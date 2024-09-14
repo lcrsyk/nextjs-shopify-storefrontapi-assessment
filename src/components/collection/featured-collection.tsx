@@ -3,7 +3,7 @@ import ProductGridCarousel from "./product-grid-carousel";
 
 export default async function FeaturedCollection() {
   const products = await getProducts({});
-  const gridProducts = [...products, ...products.reverse()];
+  const gridProducts = [...products, ...products.reverse()].slice(0, 15);
   return (
     <>
       <div>
