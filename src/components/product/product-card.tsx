@@ -20,7 +20,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           height={255}
           alt={product.featuredImage?.altText || "Shopify Headless"}
         />
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-between items-center">
           <Price
             className="flex-none"
             amount={product.priceRange.maxVariantPrice.amount}

@@ -27,7 +27,7 @@ export default function HeroCarousel({ items }: HeroCarouselProps) {
       {items.map((product) => (
         <SwiperSlide key={product.id} className="!flex flex-col-reverse  md:!flex-row p-8 md:p-0 items-center gap-10 md:gap-16 lg:gap-48 h-auto">
           <div className="flex flex-col items-center gap-6 lg:gap-5 pb-12 md:min-w-3/5 lg:w-3/5">
-            <h2 className="text-xl lg:text-2xl text-primary leading-none">{product.title}</h2>
+            <h2 className="w-full text-xl lg:text-2xl text-primary leading-none">{product.title}</h2>
             <p className="text-primary leading-normal hidden md:block">{product.description}</p>
             <div className="flex flex-col w-[250px] md:w-full lg:flex-row gap-5 lg:gap-5">
               <Button as="a" href={`/products/${product.handle}`} variant="primary" className="w-auto md:w-2/3 flex gap-6 items-center text-sm font-bold uppercase pl-8 pr-16 py-5 rounded-[10px] lg:w-full lg:pr-3s">

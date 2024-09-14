@@ -27,7 +27,7 @@ export default function ProductGridCarousel({
     >
       {Array(slideCount).fill(null).map((slide, index) => {
         return (
-          <SwiperSlide key={index} className="!grid grid-cols-2 grid-rows-4 md:grid-cols-4 md:grid-rows-2 gap-x-5 gap-y-12 items-center h-auto px-4 md:px-32 py-2">
+          <SwiperSlide key={index} className="!grid grid-cols-2 grid-rows-4 md:grid-cols-4 md:grid-rows-2 gap-x-5 gap-y-12 items-center h-auto px-4 md:px-16 xl:px-32 py-2">
             {products
               .slice(index * rows * cols, (index + 1) * rows * cols)
               .map((product) => {
