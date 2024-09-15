@@ -1,4 +1,5 @@
 "use client";
+import { useState, Suspense } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import CustomNavigation from "../carousel/custom-navigation";
@@ -16,6 +17,8 @@ export default function ProductGridCarousel({
   cols,
   products,
 }: ProductGridCarouselProps) {
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
   const slideCount = Math.ceil(products.length / (rows * cols));
   return (
     <Swiper
@@ -24,19 +27,23 @@ export default function ProductGridCarousel({
       slidesPerView={1}
       navigation={false}
       modules={[Navigation]}
+      onSlideChange={(swiper) => {
+        setIsBeginning(swiper.isBeginning);
+        setIsEnd(swiper.isEnd);
+      }}
     >
       {Array(slideCount).fill(null).map((slide, index) => {
         return (
-          <SwiperSlide key={index} className="!grid grid-cols-2 grid-rows-4 md:grid-cols-4 md:grid-rows-2 gap-x-5 gap-y-12 items-center h-auto px-4 md:px-16 xl:px-32 py-2">
+          <SwiperSlide key={index} className="!grid grid-cols-2 grid-rows-4 md:grid-cols-2 md:grid-rows-4 lg:grid-cols-4 lg:grid-rows-2 gap-x-5 gap-y-12 items-center h-auto px-4 md:px-16 xl:px-32 py-2">
             {products
               .slice(index * rows * cols, (index + 1) * rows * cols)
               .map((product) => {
-                return <ProductCard key={product.id} product={product} />;
+                return <Suspense fallback={null}><ProductCard key={product.id} product={product} /></Suspense>;
               })}
           </SwiperSlide>
         );
       })}
-      <CustomNavigation className="relative justify-center mt-20 mb-96"/>
+      <CustomNavigation className="relative justify-center mt-20 mb-96" isBeginning={isBeginning} isEnd={isEnd}/>
     </Swiper>
   );
 }

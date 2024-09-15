@@ -15,14 +15,13 @@ function SubmitButton({
   availableForSale: boolean;
   selectedVariantId: string | undefined;
 }) {
-  const buttonClasses =
-    "relative flex w-full items-center justify-center rounded-full bg-blue-600 p-4 tracking-wide text-white";
+ 
   const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60";
 
   if (!availableForSale) {
     return (
       <Button
-        className={clsx("rounded-full px-3 py-1 uppercase", disabledClasses)}
+        className={clsx("rounded-full min-w-[100px] px-3 py-1 uppercase", disabledClasses)}
         variant="primary"
         onClick={() => {}}
       >
@@ -34,7 +33,7 @@ function SubmitButton({
   if (!selectedVariantId) {
     return (
       <Button
-        className={clsx("rounded-full px-3 py-1 uppercase")}
+        className={clsx("rounded-full min-w-[100px] px-3 py-1 uppercase")}
         variant="primary"
         onClick={() => {}}
       >
@@ -45,7 +44,7 @@ function SubmitButton({
 
   return (
     <Button
-      className={clsx("rounded-full px-3 py-1 uppercase")}
+      className={clsx("rounded-full min-w-[100px] px-3 py-1 uppercase")}
       variant="primary"
       onClick={() => {}}
     >
@@ -56,7 +55,7 @@ function SubmitButton({
 
 export function AddToCart({ product }: { product: Product }) {
   const { variants, availableForSale } = product;
-  const { addCartItem, cart } = useCart();
+  const { addCartItem } = useCart();
 
   const { state } = useProduct();
 

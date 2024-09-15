@@ -9,7 +9,6 @@ import AnnouncementBar from '@/components/layout/announcement-bar';
 
 
 import './globals.css';
-import CartModal from '@/components/cart/cart-modal';
 
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL

@@ -7,9 +7,6 @@ import { useCart } from "./cart-context";
 import { DeleteItemButton } from "./delete-item-button";
 import CartButton from "./cart-button";
 
-type CartModalProps = {
-  isOpen: boolean;
-};
 export default function CartModal() {
   const { cart, updateCartItem } = useCart();
   const [isOpen, setIsOpen] = useState(false);

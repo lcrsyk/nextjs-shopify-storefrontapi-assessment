@@ -3,15 +3,17 @@
 import { removeItem } from '@/components/cart/actions';
 import type { CartItem } from '@/lib/shopify/types';
 import { useFormState } from 'react-dom';
+import { UpdateType } from './cart-context';
 
 export function DeleteItemButton({
   item,
   optimisticUpdate
 }: {
   item: CartItem;
-  optimisticUpdate: any;
+  optimisticUpdate: (merchandiseId: string, updateType: UpdateType) => void;
 }) {
   const [message, formAction] = useFormState(removeItem, null);
+  console.log(message)
   const merchandiseId = item.merchandise.id;
   const actionWithVariant = formAction.bind(null, merchandiseId);
 

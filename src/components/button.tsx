@@ -3,22 +3,19 @@ import Link from "next/link";
 type ButtonProps = {
   as?: "button" | "a";
   href?: string;
-  icon?: any;
-  variant: "primary" | "danger" | "bordered";
-  disabled?: boolean;
+  variant?: "primary" | "danger" | "bordered";
+  isDisable?: boolean;
   children: React.ReactNode;
 } & Omit<React.ComponentProps<"button">, "children">;
 
 export default function Button({
   as = "button",
   href,
-  icon,
   variant,
-  disabled,
+  isDisable,
   children,
   ...rest
 }: ButtonProps) {
-  const Icon = icon;
   return as === "a" ? (
     <Link
       href={href || "#"}
@@ -37,6 +34,7 @@ export default function Button({
   ) : (
     <button
       {...rest}
+      disabled={isDisable}
       className={`${
         variant === "primary"
           ? "bg-primary text-white"
