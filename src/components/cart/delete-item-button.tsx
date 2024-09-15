@@ -13,7 +13,6 @@ export function DeleteItemButton({
   optimisticUpdate: (merchandiseId: string, updateType: UpdateType) => void;
 }) {
   const [message, formAction] = useFormState(removeItem, null);
-  console.log(message)
   const merchandiseId = item.merchandise.id;
   const actionWithVariant = formAction.bind(null, merchandiseId);
 
