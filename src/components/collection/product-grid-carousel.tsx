@@ -38,7 +38,7 @@ export default function ProductGridCarousel({
             {products
               .slice(index * rows * cols, (index + 1) * rows * cols)
               .map((product) => {
-                return <Suspense fallback={null}><ProductCard key={product.id} product={product} /></Suspense>;
+                return <Suspense key={product.id} fallback={null}><ProductCard key={product.id} product={product} /></Suspense>;
               })}
           </SwiperSlide>
         );
